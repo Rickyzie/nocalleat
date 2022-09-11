@@ -3,12 +3,11 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @SpringBootApplication
@@ -48,7 +47,7 @@ class Coffee {
 
 @RestController
 class RestApiDemoController {
-	private List<Coffee> coffees = new ArrayList<>();
+	private ArrayList<Coffee> coffees = new ArrayList<>();
 
 	public RestApiDemoController() {
 		coffees.addAll(List.of(
@@ -63,4 +62,31 @@ class RestApiDemoController {
 		return coffees;
 	}
 
+	@GetMapping("/coffees/{id}")
+	Optional<Coffee> getCoffeeById(@PathVariable String id) {
+		for(Coffee c: coffees){
+			if(c.getId().equals(id)){
+				return Optional.of(c);
+			}
+		}
+		return Optional.empty();
+	}
+
+	@PostMapping("/coffees")
+	Coffee postCoffee(@RequestBody Coffee coffee) {
+		coffees.add(coffee);
+		return coffee;
+	}
+
+	@PutMapping("/coffees/{id}")
+	Coffee putCoffee(@PathVariable String id, @RequestBody Coffee coffee) {
+		int coffeeIndex = -1;
+		for(Coffee c : coffees){
+			if(c.getId().equals(id)) {
+				coffeeIndex = coffees.indexOf(c);
+				coffees.set(coffeeIndex, coffee);
+			}
+		}
+		return (coffeeIndex == -1)? postCoffee(coffee) : coffee;
+	}
 }
