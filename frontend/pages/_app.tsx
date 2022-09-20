@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router';
 import { useState,useEffect } from 'react'
-
+import  LinearProgress   from '@mui/material/LinearProgress';
 function Loading() {
   const router = useRouter();
 
@@ -10,7 +10,7 @@ function Loading() {
 
   useEffect(() => {
       const handleStart = (url) => (url !== router.asPath) && setLoading(true);
-      const handleComplete = (url) => (url === router.asPath) && setTimeout(() =>{setLoading(false)},5000);
+      const handleComplete = (url) => (url === router.asPath) && setTimeout(() =>{setLoading(false)},500);
 
       router.events.on('routeChangeStart', handleStart)
       router.events.on('routeChangeComplete', handleComplete)
@@ -23,8 +23,7 @@ function Loading() {
       }
   })
   
-  return loading && (<div className='spinner-wrapper'>
-    <div className="spinner"></div></div>)
+  return loading?(<LinearProgress />):(<div></div>)
 }
 function MyApp({ Component, pageProps }: AppProps) {
   return <><Loading/><Component {...pageProps} /></>
