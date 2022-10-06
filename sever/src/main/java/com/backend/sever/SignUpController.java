@@ -14,34 +14,22 @@ public class SignUpController {
     @RequestMapping(path="/adduser") // Map ONLY POST Requests
     @ResponseBody
     public String addNewUser (
-            @RequestParam String name,
-            @RequestParam String email
+            @RequestParam String username,
+            @RequestParam String email,
+            @RequestParam String password
+
     ) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
         User n = new User();
-        n.setName(name);
+        n.setUsername(username);
         n.setEmail(email);
+        n.settPassword(password);
         userRepository.save(n);
         return "Saved";
     }
 
-    @RequestMapping(path="/addpeople") // Map ONLY POST Requests
-    @ResponseBody
-    public String addpeople (
-            @RequestParam String name,
-            @RequestParam String email
-    ) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
-
-        User n = new User();
-        n.setName(name);
-        n.setEmail(email);
-        userRepository.save(n);
-        return "Saved";
-    }
 
     @RequestMapping(path="/all")
     @ResponseBody
