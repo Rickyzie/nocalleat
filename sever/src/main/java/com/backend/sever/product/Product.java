@@ -15,9 +15,11 @@ public class Product {
 
 	private String product_name;
 
-	private String price;
+	private Integer price;
 
-	private String quantity;
+	private Integer quantity;
+
+	private Integer store_id;
 
 
 

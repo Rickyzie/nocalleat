@@ -15,13 +15,14 @@ public class StoreSignUpController {
     @RequestMapping(path="store/add") // Map ONLY POST Requests
     @ResponseBody
     public String addNewUser (
+            @RequestParam String store_name,
             @RequestParam String address
-
     ) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
         Store n = new Store();
+        n.setStore_name(store_name);
         n.setAddress(address);
         storeRepository.save(n);
         return "Saved";
@@ -30,7 +31,7 @@ public class StoreSignUpController {
 
     @RequestMapping(path="store/all")
     @ResponseBody
-    public  Iterable<Store> getAllUsers() {
+    public  Iterable<Store> findAll() {
         // This returns a JSON or XML with the users
         return storeRepository.findAll();
     }

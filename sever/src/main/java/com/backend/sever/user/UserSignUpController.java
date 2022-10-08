@@ -33,7 +33,7 @@ public class UserSignUpController {
 
     @RequestMapping(path="user/all")
     @ResponseBody
-    public  Iterable<User> getAllUsers() {
+    public  Iterable<User> findAll() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }
