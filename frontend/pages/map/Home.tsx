@@ -1,7 +1,5 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Link from 'next/link';
+import Map from '../../components/Map';
 export default function Home() {
   
-  return <Link href='/'><Button variant="contained" >Hello World</Button></Link>;
+  return <Map />;
 }
