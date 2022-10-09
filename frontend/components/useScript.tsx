@@ -6,7 +6,7 @@ declare global {
 }
 export const useScript = (url:string , name:string) => {
 
-    const [lib, setLib] = useState(window[name]);
+    const [lib, setLib] = useState<any>({});
 
     useEffect(() => {
         const script = document.createElement('script') as HTMLScriptElement;
