@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react'
-
+declare global {
+    interface Window {
+        [name: string]: any;
+    }
+}
 export const useScript = (url:string , name:string) => {
 
-    const [lib, setLib] = useState({});
+    const [lib, setLib] = useState(window[name]);
 
     useEffect(() => {
         const script = document.createElement('script') as HTMLScriptElement;

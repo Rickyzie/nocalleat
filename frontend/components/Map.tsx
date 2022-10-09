@@ -1,11 +1,23 @@
 import { useState,useEffect } from 'react';
 import { useScript } from './useScript';
+declare global {
+    interface Window {
+        initMap: () => void;
+    }
+}
+
 export default function Map(){
-    const  google  = useScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCWe1j3_0YCjWi1oTmsgtmiSVqDv5uD0Cg&v=weekly', 'google')
+    let  google  = useScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAnndmEQUpb7OFdBpQTAvbOKxLfzm_Us2Q&v=weekly', 'google');
     useEffect(()=>{
-        console.log(google) 
+        window.initMap = function(): void {
+            const map = new google.maps.Map(document.getElementById("map") as HTMLElement, {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8,
+                });
+        };
+        google.maps?window.initMap():void 0;
     },[google])
     return (
-        <div id="map"></div>
+        <div style={{height:"100px"}} id="map"></div>
     )
 }
