@@ -12,7 +12,7 @@ declare global {
 }
 //zaSyAnndmEQUpb7OFdBpQTAvbOKxLfzm_Us2Q
 export default function Map(){
-    const mapRef:{current:HTMLElement} = useRef<any>(null);
+    const mapRef = useRef<HTMLDivElement>(null);
     let  google  = useScript('https://maps.googleapis.com/maps/api/js?key=AI&v=weekly', 'google');
     useEffect(()=>{
         window.initMap = function(){

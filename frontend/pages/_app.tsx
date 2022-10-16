@@ -12,8 +12,8 @@ function Loading() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-      const handleStart = (url: string) => (url !== router.asPath) && setLoading(true);
-      const handleComplete = (url: string) => (url === router.asPath) && setTimeout(() =>{setLoading(false)},1000);
+      const handleStart = (url: string) => setLoading(true);
+      const handleComplete = (url: string) => setTimeout(() =>{setLoading(false)},300);
 
       router.events.on('routeChangeStart', handleStart)
       router.events.on('routeChangeComplete', handleComplete)
@@ -26,7 +26,7 @@ function Loading() {
       }
   }, [])
   
-  return loading?(<LinearProgress />):(<div></div>)
+  return loading?(<div style={{position: "absolute", left:"0", right:"0", width:"100vw",zIndex: "1"}}><LinearProgress color="inherit"/></div>):(<div></div>)
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
