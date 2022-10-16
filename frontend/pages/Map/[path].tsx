@@ -7,6 +7,7 @@ import { DefaultTheme } from "../../theme/themeOptions";
 import { useRouter } from "next/router";
 import SignUp from "../SignUp";
 import Link from 'next/link';
+import Entry from "../Entry";
 
 const DragBar = styled.div`
     display: flex;
@@ -22,8 +23,14 @@ export default function Home() {
     const [gridNum, setGridNum] = useState(4);
     const [page, setPage] = useState(1);
     const router = useRouter()
-    const { pid } = router.query
-
+    const pathObject = {
+        Login: <Login />,
+        SignUp: <SignUp />,
+        Entry: <Entry />
+        };
+    const path = typeof router.query.path === "string" && pathObject[router.query.path as keyof typeof pathObject]?router.query.path:"Entry";
+    
+    
     const dragBarRef = useRef<HTMLDivElement>(null);
 
     // handle dragbar resizable 
@@ -49,18 +56,7 @@ export default function Home() {
     return (
             <Grid container >
             <Grid item xs={gridNum}>
-                <Link href="/map/Login">
-                    <a>Login</a>
-                </Link>
-                <Link href="/map/SignUp">
-                    <a>SignUp</a>
-                </Link>
-                {
-                    {
-                    'Login': <Login />,
-                    'SignUp': <SignUp />
-                    }[pid]
-                }
+                {pathObject[path as keyof typeof pathObject]}
             </Grid>
             <Grid  item xs={12 - gridNum}>
                 <div
@@ -71,7 +67,6 @@ export default function Home() {
                     <DragBar ref={dragBarRef}>II</DragBar>
                     <Map/>
                 </div>
-                <p>{pid}</p>
             </Grid>
             </Grid>
     )

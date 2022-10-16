@@ -46,9 +46,12 @@ export default function SignInSide() {
                 sx={{
                 my: 10,
                 mx: 4,
+                ml: "auto",
+                mr: "auto",
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                maxWidth: "400px"
                 }}
             >
                 <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>

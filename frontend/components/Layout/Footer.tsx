@@ -14,7 +14,7 @@ function Copyright() {
         <Typography variant="body2" color="text.secondary">
         {'Copyright © '}
         <Link color="inherit" href="https://mui.com/">
-            Your Website
+            nolcalleat
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -39,7 +39,7 @@ export default function Footer() {
             >
                 <Container maxWidth="sm">
                 <Typography variant="body1">
-                    My sticky footer can be found here.
+                    Made By Rickyzie.
                 </Typography>
                 <Copyright />
                 </Container>
