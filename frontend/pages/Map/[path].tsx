@@ -1,4 +1,4 @@
-import { Grid, Button } from "@mui/material"
+import { Grid, Button, ThemeProvider } from "@mui/material"
 import styled from '@emotion/styled';
 import Login from "../Login";
 import Map from "../../components/Map";
@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import SignUp from "../SignUp";
 import Link from 'next/link';
 import Entry from "../Entry";
+
+const theme = DefaultTheme;
 
 const DragBar = styled.div`
     display: flex;
@@ -54,8 +56,9 @@ export default function Home() {
     },[])
 
     return (
+        <ThemeProvider theme={theme}>
             <Grid container >
-            <Grid item xs={gridNum}>
+            <Grid item xs={gridNum} sx={{bgcolor: "primary.dark"}}>
                 {pathObject[path as keyof typeof pathObject]}
             </Grid>
             <Grid  item xs={12 - gridNum}>
@@ -69,5 +72,6 @@ export default function Home() {
                 </div>
             </Grid>
             </Grid>
+        </ThemeProvider>
     )
 }

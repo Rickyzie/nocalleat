@@ -12,12 +12,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import favicon from '../../public/favicon-32x32.png'
 import { ThemeProvider } from '@emotion/react';
 import { DefaultTheme } from '../../theme/themeOptions'
+import Image from 'next/image';
 const theme = DefaultTheme;
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['customer', 'store'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Topbar = () => {
@@ -44,7 +45,14 @@ const Topbar = () => {
             <AppBar position="static" color="primary" enableColorOnDark>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                    <LunchDiningIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <Box sx={{ display: { xs: 'none', md: 'flex', marginRight: "10px"} }}>
+                        <Image 
+                            src={favicon}
+                            width={32}
+                            height={32}
+                        /> 
+                    </Box>
+
                     <Typography
                         variant="h6"
                         noWrap
@@ -60,7 +68,7 @@ const Topbar = () => {
                         textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        NoCallEat
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -99,7 +107,7 @@ const Topbar = () => {
                         ))}
                         </Menu>
                     </Box>
-                    <LunchDiningIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
                     <Typography
                         variant="h5"
                         noWrap
@@ -116,7 +124,7 @@ const Topbar = () => {
                         textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        NoCallEat
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (

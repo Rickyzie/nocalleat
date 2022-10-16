@@ -39,7 +39,7 @@ export default function SignInSide() {
 
     return (
         <ThemeProvider theme={theme}>
-        <Grid container component="main" sx={{ height: '100vh' }}>
+        <Grid container component="main" sx={{ height: '100vh', bgcolor: "primary.dark" }}>
             <CssBaseline />
             <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
             <Box
