@@ -26,9 +26,9 @@ export default function Home() {
     const [page, setPage] = useState(1);
     const router = useRouter()
     const pathObject = {
-        Login: <Login />,
-        SignUp: <SignUp />,
-        Entry: <Entry />
+        login: <Login />,
+        signUp: <SignUp />,
+        entry: <Entry />
         };
     const path = typeof router.query.path === "string" && pathObject[router.query.path as keyof typeof pathObject]?router.query.path:"Entry";
     

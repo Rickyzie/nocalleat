@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import { Button, ThemeProvider } from '@mui/material';
 import { DefaultTheme } from '../theme/themeOptions';
 import Link from 'next/link';
+import { RoutePaths } from "../components/route/@type/routes.d"
 
 const theme = DefaultTheme;
 
@@ -32,12 +33,12 @@ const theme = DefaultTheme;
             </Container>
             </Box>
             <Container component="main" sx={{ mt: 1, mb: 2 }} maxWidth="sm">
-                <Link href="/Map/Login">
+                <Link href={RoutePaths.LOGIN}>
                     <Box component="span" >
                         <Button variant="contained" size="large">登入</Button>
                     </Box>
                 </Link>
-                <Link href="/Map/SignUp">
+                <Link href={RoutePaths.SIGNUP}>
                     <Box component="span"sx={{ ml: 2 }}>
                         <Button variant="contained" size="large">註冊</Button>
                     </Box>
